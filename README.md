@@ -2,6 +2,9 @@
 
 ## MVP+多线程+断电续传 实现app在线升级库 (手把手教你打造自己的lib)
 
+这个updatelib 是空的，完整工程请用这个链接下载：
+
+https://download.csdn.net/download/u011418943/10292537
 
 详细介绍可以看我的博客：
 http://blog.csdn.net/u011418943/article/details/70562580
