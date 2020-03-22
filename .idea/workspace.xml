@@ -1,15 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="zsr" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="69289a5b-d8d6-4bd2-b2db-56b7db48f2f6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
+    <list default="true" id="1adcef3e-02d2-4395-9776-43c8658776f1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/zhengsr/zupdate/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/TestBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/zhengsr/zupdate/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/consumer-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/androidTest/java/com/zhengsr/zdwon_lib/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/ZDown.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZThreadBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/callback/BaseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/callback/CheckListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/CheckParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/RequestManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/db/DBHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/db/ZDBManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpCreate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/DownWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZCheckTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZDownTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZCommontUitls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/widget/InvisiabelFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update-lib/src/test/java/com/zhengsr/zdwon_lib/ExampleUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +86,7 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="127.0.0.1:62001" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -31,37 +97,183 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rachel/updatedemo/MainActivity.java">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/RequestManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="495">
+              <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#252#253#0" expanded="true" />
+                <element signature="e#286#287#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/CheckParams.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/DownWorker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="44" column="59" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#1123#1137#0" expanded="true" />
+                <element signature="e#1807#1808#0" expanded="true" />
+                <element signature="e#1899#1900#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZDownTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+            <state relative-caret-position="164">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1609#2523#0" expanded="true" />
+                <element signature="e#2522#2523#0" expanded="true" />
+                <element signature="e#2547#2555#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://D:/Android/sdk/sources/android-28/java/io/RandomAccessFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-166">
+              <caret line="229" column="37" selection-start-line="229" selection-start-column="33" selection-end-line="229" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZCheckTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#986#1186#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZCommontUitls.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#803#1082#0" expanded="true" />
+                <element signature="e#1081#1082#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/ZUpdate.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/RquestManager.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/RequestManager.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/bean/ZBean.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/widget/InvisiabelFragment.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/ZDown.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/entrance/CheckParams.java" />
+        <option value="$PROJECT_DIR$/update-lib/build.gradle" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/entrance/imp/net/ZHttpServer.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/entrance/imp/task/ZJsonTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/entrance/RequestManager.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/callback/BaseListener.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/callback/CheckListener.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/update_lib/entrance/imp/task/ZCheckTask.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpCreate.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZCheckTask.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/TestBean.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZThreadBean.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/db/DBHelper.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/db/ZDBManager.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZStorageUtils.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZRxUtils.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/MD5Utils.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZCommontUitls.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/MainActivity.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZBean.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/RequestManager.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/CheckParams.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/DownWorker.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpServer.java" />
+        <option value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZDownTask.java" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -69,104 +281,53 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <hideEmptyPackages AndroidView="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
+      <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="rachel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="rachel" type="462c0819:PsiDirectoryNode" />
-              <item name="updatedemo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppUpdateDemo" type="1abcf292:AndroidViewProjectNode" />
-              <item name="AppUpdateDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="layout" type="462c0819:PsiDirectoryNode" />
+              <item name="ZUpdate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AppUpdateDemo" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="D:/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib" />
+    <property name="project.structure.last.edited" value="Dependencies" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.zhengsr.zdwon_lib.bean" />
+      <recent name="com.zhengsr.update_lib.entrance.imp.task" />
+      <recent name="com.zhengsr.update_lib.widget" />
+      <recent name="com.zhengsr.update_lib.entrance" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Android\git\AppUpdateDemo\update-lib\src\main\java\com\zhengsr\zdwon_lib" />
+      <recent name="E:\Android\git\AppUpdateDemo\update-lib\src\main\java\com\zhengsr\zdwon_lib\entrance\imp\db" />
+      <recent name="E:\Android\git\AppUpdateDemo\update-lib\src\main\java\com\zhengsr\update_lib\entrance\imp\net" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -180,21 +341,85 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="69289a5b-d8d6-4bd2-b2db-56b7db48f2f6" name="Default Changelist" comment="" />
-      <created>1584759975595</created>
+      <changelist id="1adcef3e-02d2-4395-9776-43c8658776f1" name="Default Changelist" comment="" />
+      <created>1584762202187</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1584759975595</updated>
+      <updated>1584762202187</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.20415778" />
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.2238806" />
       <window_info id="Structure" side_tool="true" />
       <window_info id="Build Variants" side_tool="true" />
       <window_info id="Image Layers" />
@@ -202,13 +427,19 @@
       <window_info id="Resources Explorer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Run" weight="0.32962137" />
+      <window_info anchor="bottom" id="Logcat" weight="0.32962137" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Find" weight="0.32962137" />
+      <window_info anchor="bottom" id="Debug" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" side_tool="true" />
       <window_info anchor="bottom" id="Build" weight="0.32962137" />
+      <window_info anchor="bottom" id="Android Profiler" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="Gradle" />
       <window_info anchor="right" id="Theme Preview" />
@@ -219,22 +450,247 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rachel/updatedemo/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/widget/InvisiabelFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="734">
+          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/ZDown.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="79" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/callback/BaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/callback/CheckListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <element signature="e#254#255#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpCreate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-64">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="35" selection-start-line="35" selection-end-line="41" selection-end-column="62" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+        <state relative-caret-position="353">
+          <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/TestBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding>
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+            <element signature="e#594#595#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZThreadBean.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/db/DBHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/db/ZDBManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2356">
+          <caret line="126" column="1" lean-forward="true" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZRxTimeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZStorageUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" selection-start-line="10" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZRxUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/MD5Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/utils/ZCommontUitls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#803#1082#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/zhengsr/zupdate/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#986#1186#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/bean/ZBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/CheckParams.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="69" column="33" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/RequestManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#252#253#0" expanded="true" />
+            <element signature="e#286#287#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/net/ZHttpServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="33" column="14" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZCheckTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/DownWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="44" column="59" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#1123#1137#0" expanded="true" />
+            <element signature="e#1807#1808#0" expanded="true" />
+            <element signature="e#1899#1900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android/sdk/sources/android-28/java/io/RandomAccessFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-166">
+          <caret line="229" column="37" selection-start-line="229" selection-start-column="33" selection-end-line="229" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/update-lib/src/main/java/com/zhengsr/zdwon_lib/entrance/imp/task/ZDownTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1609#2523#0" expanded="true" />
+            <element signature="e#2522#2523#0" expanded="true" />
+            <element signature="e#2547#2555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
