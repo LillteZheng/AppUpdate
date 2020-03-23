@@ -1,66 +1,29 @@
 package com.zhengsr.zdwon_lib.bean;
 
-import android.content.Context;
-
-import com.zhengsr.zdwon_lib.callback.BaseListener;
-
-import java.util.Map;
-
 /**
- * @auther by zhengshaorui on 2020/3/21
- * describe:
+ * @author by  zhengshaorui on 2019/9/6
+ * Describe: 给远不调用的Bean
  */
 public class ZBean {
     /**
-     * context
+     * 总长度
      */
-    public Context context;
+    public long fileLength;
     /**
-     * url
+     * 当前下载的长度
      */
-    public String url;
+    public long curLength;
+    /**
+     * 下载速度
+     */
+    public String speed;
 
-    /**
-     * 线程个数，默认单线程,最多8个线程，线程数量不是越多越好，一般3-5个最佳
-     */
-    public int threadCount = 1;
-
-    /**
-     * UI刷新时间，默认1s
-     */
-    public int reFreshTime = 1000;
-
-    /**
-     * 文件下载路径，默认内部存储
-     */
-    public String filePath;
-
-    /**
-     * 文件名称，默认根据 url 后缀来
-     */
-    public String fileName;
-
-    /**
-     * post 的参数
-     */
-    public Map<String,String> paramsMap;
-    /**
-     * 是否允许后台更新
-     */
-    public boolean allowBackDownload = false;
-
-    /**
-     * 是否允许断点续传，即数据保存
-     */
-    public boolean useBreakPoint;
-
-    /**
-     * 文件长度，当json本身就给了文件大小，可通过该选项去做一些判断和分割下载
-     */
-    public long fileLength = -1;
-
-    /**
-     * 监听回调
-     */
-    public BaseListener listener;
+    @Override
+    public String toString() {
+        return "ZBean{" +
+                "fileLength=" + fileLength +
+                ", curLength=" + curLength +
+                ", speed='" + speed + '\'' +
+                '}';
+    }
 }

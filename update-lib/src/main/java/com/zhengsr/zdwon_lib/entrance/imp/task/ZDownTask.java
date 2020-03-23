@@ -1,6 +1,10 @@
 package com.zhengsr.zdwon_lib.entrance.imp.task;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.zhengsr.zdwon_lib.bean.ZBean;
+import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.bean.ZThreadBean;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
@@ -9,10 +13,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
 
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
 import io.reactivex.internal.observers.BlockingBaseObserver;
-import io.reactivex.internal.subscribers.BlockingSubscriber;
 import okhttp3.ResponseBody;
 
 /**
@@ -20,14 +22,18 @@ import okhttp3.ResponseBody;
  * describe:
  */
 public class ZDownTask extends DownWorker {
-    private CompositeDisposable mDisposable;
-    public ZDownTask(ZBean bean) {
+    private static final String TAG = "ZDownTask";
+    private volatile long mTaskSize = 0;
+    private long mLastTime = 0;
+
+    public ZDownTask(ZTaskBean bean) {
         super(bean);
-        mDisposable = new CompositeDisposable();
     }
 
+
+
     @Override
-    public void handleData(ZBean bean) {
+    public void handleData(ZTaskBean bean) {
         //每一块的大小
         long blockSize = bean.fileLength / bean.threadCount;
         //使用数据
@@ -48,14 +54,14 @@ public class ZDownTask extends DownWorker {
                 threadBean.startPos = start;
                 threadBean.endPos = end;
                 threadBean.threadId = i;
-                downFile(bean,start,end);
+                downFile(threadBean,bean,new checkTask());
             }
         }
     }
 
 
-    private void downFile(final ZBean bean, final long start, long end){
-        String rangeHeader = "bytes="+start+"-"+end;
+    private void downFile(final ZThreadBean bean, final ZTaskBean zBean, final TaskListener listener){
+        String rangeHeader = "bytes="+bean.startPos+"-"+bean.endPos;
         addSubscribe(
                 ZHttpCreate.getService().download(bean.url,rangeHeader)
                 .map(new Function<ResponseBody, String>() {
@@ -67,17 +73,21 @@ public class ZDownTask extends DownWorker {
 
                         try {
                             InputStream is = body.byteStream();
-                            File file = new File(bean.filePath, bean.fileName);
+                            File file = new File(zBean.filePath, zBean.fileName);
                             raf = new RandomAccessFile(file, "rwd");
                             //找到上一次的点
-                            raf.seek(start);
+                            raf.seek(bean.startPos);
                             byte[] bytes = new byte[1024 * 2];
                             int len;
                             while ((len = is.read(bytes)) != -1) {
                                 raf.write(bytes, 0, len);
-                            }
 
+                                listener.onProgress(len);
+                            }
+                            listener.onSuccess();
+                            return "success";
                         }catch (Exception e){
+                            listener.onFail(e.getMessage());
                             return "error: "+e.getMessage();
                         }finally {
                             if (raf != null) {
@@ -85,7 +95,7 @@ public class ZDownTask extends DownWorker {
                             }
                         }
 
-                        return null;
+
                     }
                 }).compose(ZCommontUitls.<String>rxScheduers())
                 .subscribeWith(new BlockingBaseObserver<String>() {
@@ -96,11 +106,55 @@ public class ZDownTask extends DownWorker {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        listener.onFail(e.getMessage());
                     }
                 })
 
         );
     }
+
+
+    interface TaskListener{
+        void onFail(String msg);
+        void onSuccess();
+        void onProgress(long len);
+    }
+
+
+    static Handler handler = new Handler(Looper.getMainLooper());
+
+    /**
+     * 从线程转换成 UI 线程
+     */
+    class checkTask implements TaskListener{
+
+        @Override
+        public void onFail(String msg) {
+
+        }
+
+        @Override
+        public void onSuccess() {
+
+        }
+
+        @Override
+        public void onProgress(long len) {
+            mTaskSize = mTaskSize + len;
+            long now = System.currentTimeMillis();
+            if (now - mLastTime >= mTaskBean.reFreshTime){
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mBean.curLength = mTaskSize;
+                        mBean.fileLength = mTaskBean.fileLength;
+                    }
+                });
+                mLastTime = now;
+            }
+        }
+    }
+
+
 
 }

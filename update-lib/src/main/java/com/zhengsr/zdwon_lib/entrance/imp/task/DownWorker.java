@@ -1,9 +1,9 @@
 package com.zhengsr.zdwon_lib.entrance.imp.task;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 
 import com.zhengsr.zdwon_lib.bean.ZBean;
+import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
 
@@ -19,8 +19,11 @@ import okhttp3.ResponseBody;
 public abstract class DownWorker {
     private static final String TAG = "DownWorker";
     private CompositeDisposable mDisposable;
-
-    public DownWorker(ZBean bean) {
+    protected ZTaskBean mTaskBean;
+    protected ZBean mBean;
+    public DownWorker(ZTaskBean bean) {
+        mTaskBean = bean;
+        mBean = new ZBean();
         checkMemory(bean);
     }
 
@@ -30,7 +33,7 @@ public abstract class DownWorker {
      * @param bean
      */
     @SuppressLint("CheckResult")
-    private void checkMemory(final ZBean bean){
+    private void checkMemory(final ZTaskBean bean){
 
         //如果传递了文件长度，则对比是否超过内存大小了
         if (bean.fileLength != -1){
@@ -75,7 +78,7 @@ public abstract class DownWorker {
         return true;
     }
 
-    public abstract void handleData(ZBean bean);
+    public abstract void handleData(ZTaskBean bean);
 
     public void addSubscribe(Disposable disposable){
         if (mDisposable == null){

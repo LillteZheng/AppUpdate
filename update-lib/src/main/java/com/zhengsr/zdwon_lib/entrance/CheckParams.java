@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 
-import com.zhengsr.zdwon_lib.bean.ZBean;
+import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.widget.InvisiabelFragment;
 
 import java.io.File;
@@ -26,7 +26,7 @@ public class CheckParams {
     public CheckParams() {
     }
 
-    public ZBean check(ZBean info){
+    public ZTaskBean check(ZTaskBean info){
         //url肯定是必须的
         if (TextUtils.isEmpty(info.url)){
             throw new RuntimeException("url can not be null");
@@ -76,7 +76,7 @@ public class CheckParams {
     }
 
 
-    public ZBean checkJsonUrl(ZBean info){
+    public ZTaskBean checkJsonUrl(ZTaskBean info){
         //url肯定是必须的
         if (TextUtils.isEmpty(info.url)){
             throw new RuntimeException("url can not be null");
@@ -105,7 +105,7 @@ public class CheckParams {
      * 添加一个没有页面的 fragment，用来监听生命周期
      * @param info
      */
-    private void register(final ZBean info){
+    private void register(final ZTaskBean info){
         if (info.context instanceof FragmentActivity){
             // Log.d(TAG, "zsr --> register: "+info.context);
             FragmentActivity activity = (FragmentActivity) info.context;

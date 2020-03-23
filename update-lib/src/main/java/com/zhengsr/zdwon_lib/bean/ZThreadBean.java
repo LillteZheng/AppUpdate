@@ -7,12 +7,30 @@ package com.zhengsr.zdwon_lib.bean;
  */
 
 public class ZThreadBean {
+    /**
+     * 线程id
+     */
     public int threadId;
+    /**
+     * 文件url
+     */
     public String url;
+    /**
+     * 文件名
+     */
     public String name;
+    /**
+     * 文件开始的点
+     */
     public long startPos;
+    /**
+     * 文件结束点
+     */
     public long endPos;
-    public long threadLength = 0; //单个线程文件长度
+    /**
+     * 单个线程文件长度
+     */
+    public long threadLength = 0;
 
 
     @Override

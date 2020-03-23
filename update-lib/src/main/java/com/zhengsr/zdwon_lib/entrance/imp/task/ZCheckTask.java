@@ -2,7 +2,7 @@ package com.zhengsr.zdwon_lib.entrance.imp.task;
 
 
 import com.alibaba.fastjson.JSON;
-import com.zhengsr.zdwon_lib.bean.ZBean;
+import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.callback.CheckListener;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 
@@ -17,7 +17,7 @@ import retrofit2.Response;
 public class ZCheckTask {
     private static final String TAG = "ZCheckTask";
 
-    public ZCheckTask(final ZBean info) {
+    public ZCheckTask(final ZTaskBean info) {
         Call<String> call;
         if (info.paramsMap != null && info.paramsMap.size() > 0) {
             call = ZHttpCreate.getService().getJson(info.url,info.paramsMap);

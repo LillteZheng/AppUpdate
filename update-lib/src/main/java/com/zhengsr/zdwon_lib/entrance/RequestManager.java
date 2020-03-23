@@ -2,9 +2,8 @@ package com.zhengsr.zdwon_lib.entrance;
 
 import android.content.Context;
 
-import com.zhengsr.zdwon_lib.bean.ZBean;
+import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.callback.BaseListener;
-import com.zhengsr.zdwon_lib.entrance.imp.task.DownWorker;
 import com.zhengsr.zdwon_lib.entrance.imp.task.ZCheckTask;
 import com.zhengsr.zdwon_lib.entrance.imp.task.ZDownTask;
 
@@ -15,10 +14,10 @@ import java.util.Map;
  * describe:
  */
 public class RequestManager {
-    private ZBean mBean;
+    private ZTaskBean mBean;
 
     public RequestManager() {
-        mBean = new ZBean();
+        mBean = new ZTaskBean();
     }
 
     public RequestManager with(Context context){
