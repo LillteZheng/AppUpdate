@@ -8,7 +8,7 @@ public class ZBean {
     /**
      * 总长度
      */
-    public long fileLength;
+    public long totalLength;
     /**
      * 当前下载的长度
      */
@@ -18,10 +18,15 @@ public class ZBean {
      */
     public String speed;
 
+    /**
+     * 当前进度百分比
+     */
+    public float progress;
+
     @Override
     public String toString() {
         return "ZBean{" +
-                "fileLength=" + fileLength +
+                "totalLength=" + totalLength +
                 ", curLength=" + curLength +
                 ", speed='" + speed + '\'' +
                 '}';

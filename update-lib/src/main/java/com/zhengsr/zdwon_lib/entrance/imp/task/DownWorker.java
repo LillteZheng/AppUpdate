@@ -16,15 +16,15 @@ import okhttp3.ResponseBody;
  * @auther by zhengshaorui on 2020/3/22
  * describe: 实现下载的统一worker
  */
-public abstract class DownWorker {
+abstract class DownWorker {
     private static final String TAG = "DownWorker";
-    private CompositeDisposable mDisposable;
+
     protected ZTaskBean mTaskBean;
     protected ZBean mBean;
     public DownWorker(ZTaskBean bean) {
         mTaskBean = bean;
         mBean = new ZBean();
-        checkMemory(bean);
+
     }
 
 
@@ -33,7 +33,7 @@ public abstract class DownWorker {
      * @param bean
      */
     @SuppressLint("CheckResult")
-    private void checkMemory(final ZTaskBean bean){
+    public void checkMemory(final ZTaskBean bean){
 
         //如果传递了文件长度，则对比是否超过内存大小了
         if (bean.fileLength != -1){
@@ -80,17 +80,5 @@ public abstract class DownWorker {
 
     public abstract void handleData(ZTaskBean bean);
 
-    public void addSubscribe(Disposable disposable){
-        if (mDisposable == null){
-            mDisposable = new CompositeDisposable();
-        }
-        mDisposable.add(disposable);
-    }
 
-    public void dispose(){
-        if (mDisposable != null) {
-            mDisposable.dispose();
-            mDisposable.clear();
-        }
-    }
 }

@@ -15,6 +15,7 @@ import java.util.Map;
  */
 public class RequestManager {
     private ZTaskBean mBean;
+    public ZDownTask mTask;
 
     public RequestManager() {
         mBean = new ZTaskBean();
@@ -96,6 +97,10 @@ public class RequestManager {
      */
     public void down(){
         mBean = new CheckParams().check(mBean);
-        new ZDownTask(mBean);
+        mTask = new ZDownTask(mBean);
     }
+
+
+
+
 }

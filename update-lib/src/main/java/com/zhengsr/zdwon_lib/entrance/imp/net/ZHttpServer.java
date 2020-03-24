@@ -31,7 +31,7 @@ public interface ZHttpServer {
 
     @Streaming
     @GET
-    Observable<ResponseBody> download(@Url String url, @Header("RANGE") String range);
+    Call<ResponseBody> download(@Url String url, @Header("RANGE") String range);
 
 
 
