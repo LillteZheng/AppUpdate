@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.zhengsr.zdwon_lib.ZDown;
@@ -15,6 +16,7 @@ import com.zhengsr.zdwon_lib.callback.DownListener;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private TextView mTextView;
+    private Button mButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         String fileUrl = "http://192.168.1.157:8089/xampp.exe";
 
         mTextView = findViewById(R.id.text);
+        mButton = findViewById(R.id.btn);
 
         String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 
@@ -43,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         String curMsg = Formatter.formatFileSize(MainActivity.this, bean.curLength);
                         String totalMsg = Formatter.formatFileSize(MainActivity.this, bean.totalLength);
                         StringBuilder sb = new StringBuilder();
-                        sb.append("当前下载: ").append(curMsg).append(" / ").append(totalMsg).append(" / 速度: ").append(bean.speed);
-
+                        sb.append(bean.progress).append(" --- ").append("当前下载: ").append(curMsg).append(" / ").append(totalMsg).append(" / 速度: ").append(bean.speed);
+                        mTextView.setText(sb.toString());
                     }
 
                     @Override
@@ -54,7 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 }).down();
     }
 
+    private boolean isPause;
     public void pause(View view) {
-        ZDown.pause();
+        if (!isPause) {
+            isPause = true;
+            ZDown.pause();
+            mButton.setText("继续");
+
+        }else{
+            ZDown.start();
+            mButton.setText("暂停");
+        }
     }
 }

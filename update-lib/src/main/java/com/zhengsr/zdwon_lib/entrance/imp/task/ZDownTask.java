@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.format.Formatter;
+import android.util.Log;
 
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.bean.ZThreadBean;
@@ -129,7 +130,7 @@ public class ZDownTask extends DownWorker {
         ZTaskBean taskBean;
         TaskListener listener;
         public DownloadThread(ZThreadBean bean,  ZTaskBean zBean, final TaskListener listener){
-            bean = bean;
+            this.bean = bean;
             taskBean = zBean;
             this.listener = listener;
         }
@@ -246,6 +247,11 @@ public class ZDownTask extends DownWorker {
                 if (file.exists()){
                     if (file.length() == mTaskBean.fileLength){
                         String mdMsg = ZCommontUitls.getFileMD5(file);
+                        mBean.curLength = mTaskBean.fileLength;
+                        mBean.progress = 100;
+                        mBean.totalLength = mTaskBean.fileLength;
+                        mBean.speed = "";
+                        mListener.onDownloading(mBean);
                         mListener.onSuccess(file.getAbsolutePath(),mdMsg);
                     }else{
                        mListener.onFail("size different! file length: "+file.length()+" / server size: "+mTaskBean.fileLength);
@@ -253,40 +259,7 @@ public class ZDownTask extends DownWorker {
                 }
             }
 
-            /*Observable.create(new ObservableOnSubscribe<Boolean>() {
-                @Override
-                public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
-                    emitter.onNext(mCurrentLength == mTaskBean.fileLength);
-                    return;
-                }
-            }).map(new Function<Boolean, String>() {
-                @Override
-                public String apply(Boolean aBoolean) throws Exception {
-                    if (aBoolean){
-                        File file = new File(mTaskBean.filePath,mTaskBean.fileName);
-                        return ZCommontUitls.getFileMD5(file);
-                    }
-                    return "null";
-                }
-            }).compose(ZCommontUitls.<String>rxScheduers())
-                    .subscribeWith(new BlockingBaseObserver<String>() {
-                        @Override
-                        public void onNext(String s) {
-                            if ("null".equals(s)){
-                                mTaskBean.listener.onFail("file length "+mTaskBean.fileLength +" != down length "+mCurrentLength);
-                            }else{
-                                File file = new File(mTaskBean.filePath,mTaskBean.fileName);
-                                if (mTaskBean.listener instanceof DownListener){
-                                    ((DownListener) mTaskBean.listener).onSuccess(file.getAbsolutePath(),s);
-                                }
-                            }
-                        }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            mTaskBean.listener.onFail(e.getMessage());
-                        }
-                    });*/
         }
 
         @Override
@@ -309,6 +282,7 @@ public class ZDownTask extends DownWorker {
                                 ((DownListener) mTaskBean.listener).onDownloading(mBean);
                             }
                             mLastSize = mCurrentLength;
+                            Log.d(TAG, "zsr run: "+mBean.progress);
 
                         }
                     });
@@ -356,6 +330,7 @@ public class ZDownTask extends DownWorker {
     }
 
     public void start(){
+        handleData(mTaskBean);
     }
 
 

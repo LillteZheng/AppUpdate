@@ -24,4 +24,12 @@ public class ZDown {
            }
        }
     }
+
+    public static void start(){
+        if (mRequestManager != null){
+            if (mRequestManager.mTask != null) {
+                mRequestManager.mTask.start();
+            }
+        }
+    }
 }
