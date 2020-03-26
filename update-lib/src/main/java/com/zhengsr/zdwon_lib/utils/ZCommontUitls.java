@@ -1,5 +1,8 @@
 package com.zhengsr.zdwon_lib.utils;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.StatFs;
 
 import java.io.File;
@@ -95,5 +98,22 @@ public class ZCommontUitls {
             stringBuilder.append(hv);
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * 安装apk
+     */
+
+    public static void installApk(Context context,String filePath){
+        File file = new File(filePath);
+        if (!file.exists()){
+            return ;
+        }
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setDataAndType(Uri.fromFile(file),"application/vnd.android.package-archive");
+        context.startActivity(intent);
     }
 }

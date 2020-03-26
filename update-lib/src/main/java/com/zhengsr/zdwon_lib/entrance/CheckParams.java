@@ -26,7 +26,7 @@ public class CheckParams {
     public CheckParams() {
     }
 
-    public ZTaskBean check(ZTaskBean info){
+    public ZTaskBean check(ZTaskBean info,InvisiabelFragment.LifecyleListener lifecyleListener){
         //url肯定是必须的
         if (TextUtils.isEmpty(info.url)){
             throw new RuntimeException("url can not be null");
@@ -58,8 +58,8 @@ public class CheckParams {
             info.fileName = info.url.substring(info.url.lastIndexOf("/")+1);
         }
         //默认刷新时间1s
-        if (info.reFreshTime < 1000){
-            info.reFreshTime = 1000;
+        if (info.reFreshTime < 200){
+            info.reFreshTime = 200;
         }
         if (info.listener == null){
             throw new RuntimeException("you need register listener to get network status");
@@ -70,7 +70,7 @@ public class CheckParams {
             info.threadCount = 8;
         }
 
-        register(info);
+        register(info,lifecyleListener);
 
         return info;
     }
@@ -105,7 +105,7 @@ public class CheckParams {
      * 添加一个没有页面的 fragment，用来监听生命周期
      * @param info
      */
-    private void register(final ZTaskBean info){
+    private void register(final ZTaskBean info,InvisiabelFragment.LifecyleListener lifecyleListener){
         if (info.context instanceof FragmentActivity){
             // Log.d(TAG, "zsr --> register: "+info.context);
             FragmentActivity activity = (FragmentActivity) info.context;
@@ -126,22 +126,7 @@ public class CheckParams {
                 ft.commit();
             }
 
-            fragment.setLifecyleListener(new InvisiabelFragment.LifecyleListener() {
-                @Override
-                public void onResume() {
-                    //Log.d(TAG, "zsr --> onResume: ");
-                }
-
-                @Override
-                public void onStop() {
-
-                }
-
-                @Override
-                public void onDestroy() {
-                    // Log.d(TAG, "zsr --> onDestroy: ");
-                }
-            });
+            fragment.setLifecyleListener(lifecyleListener);
 
         }
     }

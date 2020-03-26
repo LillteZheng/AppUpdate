@@ -1,8 +1,11 @@
 package com.zhengsr.zdwon_lib.entrance.imp.task;
 
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
+import com.zhengsr.zdwon_lib.callback.BaseListener;
 import com.zhengsr.zdwon_lib.callback.CheckListener;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 
@@ -29,8 +32,20 @@ public class ZCheckTask {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (info.listener instanceof CheckListener) {
-                     Object data =  JSON.parseObject((String) response.body(), ((CheckListener) info.listener).mclazz);
-                     ((CheckListener) info.listener).onCheck(data);
+                    CheckListener listener = (CheckListener) info.listener;
+                    try {
+                        String json = response.body();
+                        Class mclazz = listener.mclazz;
+                        if (mclazz==String.class){
+                            listener.onCheck(json);
+                        }else{
+                            Object data =  JSON.parseObject( json, mclazz);
+                            listener.onCheck(data);
+                        }
+                    } catch (Exception e) {
+                        listener.onFail(e.getMessage());
+                        e.printStackTrace();
+                    }
                 }
             }
 

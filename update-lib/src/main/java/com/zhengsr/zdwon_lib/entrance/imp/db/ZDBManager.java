@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 
 import com.zhengsr.zdwon_lib.bean.ZThreadBean;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ZDBManager {
-    private static final String TAG = "DBUtils";
+    private static final String TAG = "ZDBManager";
     private static ZDBManager sDbUtils;
     private DBHelper mDbHelper;
     private boolean mUseLitePal;
@@ -49,6 +50,7 @@ public class ZDBManager {
             values.put(DBHelper.THREAD_START, bean.startPos);
             values.put(DBHelper.THREAD_END, bean.endPos);
             db.insert(DBHelper.BOOK_TABLE, null, values);
+            db.close();
         } else {
             // update
             SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -61,6 +63,7 @@ public class ZDBManager {
 
             db.update(DBHelper.BOOK_TABLE, values, whereClause,
                     new String[]{bean.url, bean.threadId + ""});
+            db.close();
         }
 
     }
@@ -69,22 +72,23 @@ public class ZDBManager {
         if (isLockInfoExist(bean)) {
             SQLiteDatabase db = mDbHelper.getWritableDatabase();
             db.delete(DBHelper.BOOK_TABLE, whereClause, new String[]{bean.url, bean.threadId + ""});
+            db.close();
         }
     }
 
-    public synchronized void deleteAll() {
-        for (ZThreadBean bean : getAllInfo()) {
+    public synchronized void deleteAll(String url) {
+        for (ZThreadBean bean : getAllInfo(url)) {
             delete(bean);
         }
     }
 
 
-    public synchronized List<ZThreadBean> getAllInfo() {
+    public synchronized List<ZThreadBean> getAllInfo(String url) {
         try {
             List<ZThreadBean> infos = new ArrayList<>();
             SQLiteDatabase db = mDbHelper.getReadableDatabase();
-            Cursor cursor = db.query(DBHelper.BOOK_TABLE, null, null,
-                    null, null, null, null, null);
+            Cursor cursor = db.query(DBHelper.BOOK_TABLE, null,DBHelper.URL+" = ?" ,
+                    new String[]{url}, null, null, null, null);
             if (cursor.moveToFirst()) {
                 do {
                     ZThreadBean info = new ZThreadBean();
@@ -98,6 +102,7 @@ public class ZDBManager {
 
             }
             cursor.close();
+            db.close();
             return infos;
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,6 +122,7 @@ public class ZDBManager {
                 return true;
             }
             cursor.close();
+            db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

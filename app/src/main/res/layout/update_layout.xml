@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--测试用来，layout就怎么方便怎么来了-->
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="136dp"
+        android:src="@mipmap/lib_update_app_top_bg"
+       />
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/lib_update_app_info_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="是否升级到v1.1版本?"
+            android:textColor="#323232"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新如下:"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            />
+        <TextView
+            android:id="@+id/update_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            />
+
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="升级"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:background="@drawable/shape_btn"
+            android:layout_margin="20dp"/>
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/number_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_margin="20dp"
+            app:progress_unreached_color="#CCCCCC"
+            app:progress_reached_color="#3498DB"
+            app:progress_unreached_bar_height="1dp"
+            app:progress_reached_bar_height="2dp"
+            app:progress_text_size="14sp"
+            app:progress_text_color="#3498DB"
+            app:progress_text_offset="1dp"
+            android:visibility="gone"
+            app:progress_max="100"
+            app:progress_current="80"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"/>
+
+    <ImageView
+        android:id="@+id/update_dismiss"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:tint="#ffffff"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/delete"/>
+
+
+
+
+</LinearLayout>

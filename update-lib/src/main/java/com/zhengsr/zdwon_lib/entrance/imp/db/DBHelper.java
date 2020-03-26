@@ -12,13 +12,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String THREAD_END = "endPos";
     private static final String TABLE = "zdown.db";
     public static final String BOOK_TABLE = "zdown";
-    private static final String CREATE_TABLE = "create table "+BOOK_TABLE+" ("
+    private static final String SQL_CREATE = "create table "+BOOK_TABLE+" ("
             + "_id integer primary key autoincrement, "
             + URL+" text, "
             + THREADID +" integer, "
             + THREAD_START +" integer, "
             + THREAD_END +" integer, "
             + THREAD_LENGTH+" integer)";
+
+    private static final String SQL_DROP = "drop table if exists "+BOOK_TABLE;
     /**
      * 这个是初始化的时候，创建数据库的，为了方便，这里就只要传入上下文即可
      * @param context
@@ -30,11 +32,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE);
+        db.execSQL(SQL_CREATE);
     }
-    //更新的时候执行
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        //直接暴力升级了
+        db.execSQL(SQL_DROP);
+        db.execSQL(SQL_CREATE);
     }
 }

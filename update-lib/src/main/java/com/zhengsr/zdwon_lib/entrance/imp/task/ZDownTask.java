@@ -8,7 +8,8 @@ import android.util.Log;
 
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.bean.ZThreadBean;
-import com.zhengsr.zdwon_lib.callback.DownListener;
+import com.zhengsr.zdwon_lib.callback.BaseListener;
+import com.zhengsr.zdwon_lib.callback.TaskListener;
 import com.zhengsr.zdwon_lib.entrance.imp.db.ZDBManager;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
@@ -23,6 +24,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -39,16 +41,17 @@ public class ZDownTask extends DownWorker {
     private long mLastTime = 0;
     private long mLastSize = 0;
     private ConcurrentHashMap<Integer, DownloadThread> mThreadMap;
-    private DownListener mListener;
+    private TaskListener mListener;
 
+    private AtomicBoolean isReady = new AtomicBoolean(true);
     public ZDownTask(ZTaskBean bean) {
         super(bean);
-        mListener = (DownListener) bean.listener;
+        mListener = (TaskListener) bean.listener;
         mThreadMap = new ConcurrentHashMap<>();
         mCurrentLength = 0;
+
         mExecutorService = new ThreadPoolExecutor(bean.threadCount,bean.threadCount*2+1,0,
                 TimeUnit.SECONDS,new LinkedBlockingDeque<Runnable>(128));
-
         checkMemory(bean);
     }
 
@@ -56,68 +59,79 @@ public class ZDownTask extends DownWorker {
 
     @Override
     public void handleData(ZTaskBean bean) {
-        mThreadMap.clear();
-        //每一块的大小
-        long blockSize = bean.fileLength / bean.threadCount;
+        if (isReady.get()) {
 
-        //1 首先检查数据库
-        List<ZThreadBean> threadBeans = ZDBManager.getInstance().getAllInfo();
-
-        if (threadBeans != null && threadBeans.size() > 0) {
-            //如果已经有数据保存了
-            for (int i = 0; i < threadBeans.size(); i++) {
-                long end = (i + 1) * blockSize ;
-                //最后一个除不尽，用文件长度代替
-                if (i == bean.threadCount - 1) {
-                    end = bean.fileLength;
-                }
-
-                //重新弄开始和结束的点
-                ZThreadBean cacheBean = threadBeans.get(i);
-                //起点加上上一次的下载的长度
-                cacheBean.startPos = cacheBean.startPos + cacheBean.threadLength;
-
-                //重新保存数据库
-                ZDBManager.getInstance().saveOrUpdate(cacheBean);
-                DownloadThread downloadThread = new DownloadThread(cacheBean, bean,new checkTask());
-                mThreadMap.put(i,downloadThread);
+            if (mExecutorService != null && mExecutorService.isShutdown()){
+                mExecutorService = new ThreadPoolExecutor(bean.threadCount,bean.threadCount*2+1,0,
+                        TimeUnit.SECONDS,new LinkedBlockingDeque<Runnable>(128));
             }
 
-        }else{
-            //新任务，先删除数据库和本地文件
-            deleteCache();
-            for (int i = 0; i < bean.threadCount; i++) {
-                long start = i * blockSize;
-                //不去减 1 也可以
-                long end = (i + 1) * blockSize;
-                //最后一个除不尽，用文件长度代替
-                if (i == bean.threadCount - 1) {
-                    end = bean.fileLength;
-                }
-                ZThreadBean threadBean = new ZThreadBean();
-                threadBean.url = bean.url;
-                threadBean.name = bean.fileName;
-                threadBean.startPos = start;
-                threadBean.endPos = end;
-                threadBean.threadId = i;
-                //先保存数据库
-                ZDBManager.getInstance().saveOrUpdate(threadBean);
-                DownloadThread downloadThread = new DownloadThread(threadBean, bean,new checkTask());
-                mThreadMap.put(i,downloadThread);
-            }
-        }
+            mThreadMap.clear();
+            mCurrentLength = 0;
+            //每一块的大小
+            long blockSize = bean.fileLength / bean.threadCount;
 
-        /**
-         * 启动所有线程
-         */
-        int size = mThreadMap.size();
-        for (int i = 0; i < size; i++) {
-            DownloadThread downloadThread = mThreadMap.get(i);
-            mExecutorService.execute(downloadThread);
+            //1 首先检查数据库
+            List<ZThreadBean> threadBeans = ZDBManager.getInstance().getAllInfo(bean.url);
+
+            if (threadBeans != null && threadBeans.size() > 0) {
+                //如果已经有数据保存了
+
+                for (int i = 0; i < threadBeans.size(); i++) {
+
+
+                    //重新弄开始和结束的点
+                    ZThreadBean cacheBean = threadBeans.get(i);
+                    //起点加上上一次的下载的长度
+                    cacheBean.startPos = cacheBean.startPos + cacheBean.threadLength;
+                    mCurrentLength += cacheBean.threadLength;
+
+                    //重新保存数据库
+                    ZDBManager.getInstance().saveOrUpdate(cacheBean);
+                    DownloadThread downloadThread = new DownloadThread(cacheBean, bean, new checkTask());
+                    mThreadMap.put(i, downloadThread);
+                }
+
+            } else {
+                //新任务，先删除数据库和本地文件
+                deleteCache();
+                for (int i = 0; i < bean.threadCount; i++) {
+                    long start = i * blockSize;
+                    //不去减 1 也可以
+                    long end = (i + 1) * blockSize;
+                    //最后一个除不尽，用文件长度代替
+                    if (i == bean.threadCount - 1) {
+                        end = bean.fileLength;
+                    }
+                    ZThreadBean threadBean = new ZThreadBean();
+                    threadBean.url = bean.url;
+                    threadBean.name = bean.fileName;
+                    threadBean.startPos = start;
+                    threadBean.endPos = end;
+                    threadBean.threadId = i;
+                    //先保存数据库
+                    ZDBManager.getInstance().saveOrUpdate(threadBean);
+                    DownloadThread downloadThread = new DownloadThread(threadBean, bean, new checkTask());
+                    mThreadMap.put(i, downloadThread);
+                }
+            }
+
+            /**
+             * 启动所有线程
+             */
+            int size = mThreadMap.size();
+            Log.d(TAG, "zsr handleData: " + size);
+            for (int i = 0; i < size; i++) {
+                DownloadThread downloadThread = mThreadMap.get(i);
+                mExecutorService.execute(downloadThread);
+            }
+            isReady.set(false);
         }
 
 
     }
+
+
 
 
     /**
@@ -128,8 +142,8 @@ public class ZDownTask extends DownWorker {
         boolean isPause = false;
         ZThreadBean bean;
         ZTaskBean taskBean;
-        TaskListener listener;
-        public DownloadThread(ZThreadBean bean,  ZTaskBean zBean, final TaskListener listener){
+        statusListener listener;
+        public DownloadThread(ZThreadBean bean,  ZTaskBean zBean, final statusListener listener){
             this.bean = bean;
             taskBean = zBean;
             this.listener = listener;
@@ -152,6 +166,8 @@ public class ZDownTask extends DownWorker {
                      * 把数据写到文件中
                      */
                     File file = new File(taskBean.filePath,taskBean.fileName);
+
+
                     raf = new RandomAccessFile(file, "rwd");
                     //找到上一次的点
                     raf.seek(bean.startPos);
@@ -197,7 +213,7 @@ public class ZDownTask extends DownWorker {
 
 
 
-    interface TaskListener{
+    interface statusListener {
         void onFail(String msg);
         void onProgress(long len);
         void checkIsFinish();
@@ -210,14 +226,16 @@ public class ZDownTask extends DownWorker {
      * 从线程转换成 UI 线程
      */
     @SuppressLint("CheckResult")
-    class checkTask implements TaskListener{
+    class checkTask implements statusListener {
 
         @Override
         public void onFail(final String msg) {
             /**
              * 重置一些属性
              */
+            pause();
             resetData();
+            mExecutorService.shutdownNow();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
@@ -228,36 +246,48 @@ public class ZDownTask extends DownWorker {
 
 
         @Override
-        public void checkIsFinish() {
-            boolean isDone = true;
-            int size = mThreadMap.size();
-            for (int i = 0; i < size; i++) {
-                DownloadThread thread = mThreadMap.get(i);
-                if (!thread.isDone){
-                    isDone = false;
-                    break;
-                }
-            }
+        public synchronized void checkIsFinish() {
+
+            isReady.set(true);
             //已经下载完成
-            if (isDone){
-                ZDBManager.getInstance().deleteAll();
-                mExecutorService.shutdownNow();
-                mCurrentLength = 0;
-                File file = new File(mTaskBean.filePath,mTaskBean.fileName);
-                if (file.exists()){
-                    if (file.length() == mTaskBean.fileLength){
-                        String mdMsg = ZCommontUitls.getFileMD5(file);
-                        mBean.curLength = mTaskBean.fileLength;
-                        mBean.progress = 100;
-                        mBean.totalLength = mTaskBean.fileLength;
-                        mBean.speed = "";
-                        mListener.onDownloading(mBean);
-                        mListener.onSuccess(file.getAbsolutePath(),mdMsg);
-                    }else{
-                       mListener.onFail("size different! file length: "+file.length()+" / server size: "+mTaskBean.fileLength);
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    boolean isDone = true;
+                    int size = mThreadMap.size();
+                    for (int i = 0; i < size; i++) {
+                        DownloadThread thread = mThreadMap.get(i);
+                        if (thread != null && !thread.isDone){
+                            isDone = false;
+                            break;
+                        }
                     }
+                    if (isDone){
+                        ZDBManager.getInstance().deleteAll(mTaskBean.url);
+                        mExecutorService.shutdownNow();
+                        mCurrentLength = 0;
+                        File file = new File(mTaskBean.filePath,mTaskBean.fileName);
+                        if (file.exists()){
+                            if (file.length() == mTaskBean.fileLength){
+
+                                String mdMsg = ZCommontUitls.getFileMD5(file);
+                                mBean.curLength = mTaskBean.fileLength;
+                                mBean.progress = 100;
+                                mBean.totalLength = mTaskBean.fileLength;
+                                mBean.speed = "";
+                                mListener.onDownloading(mBean);
+                                mListener.onSuccess(file.getAbsolutePath(),mdMsg);
+                                resetData();
+                            }else{
+                                onFail("size different! file length:("+file.length()+") > fileLength("+mTaskBean.fileLength+")");
+                            }
+                        }else{
+                            onFail("cannot find file "+file.getAbsolutePath());
+                        }
+                    }
+
                 }
-            }
+            });
 
 
         }
@@ -278,11 +308,16 @@ public class ZDownTask extends DownWorker {
                             mBean.progress = progress;
                             mBean.totalLength = mTaskBean.fileLength;
                             mBean.speed = Formatter.formatFileSize(mTaskBean.context, size);
-                            if (mTaskBean.listener instanceof DownListener) {
-                                ((DownListener) mTaskBean.listener).onDownloading(mBean);
+                            if (mTaskBean.listener instanceof TaskListener) {
+                                ((TaskListener) mTaskBean.listener).onDownloading(mBean);
                             }
                             mLastSize = mCurrentLength;
-                            Log.d(TAG, "zsr run: "+mBean.progress);
+
+                            //判断是否文件大小错乱了
+                            if (mBean.curLength > mTaskBean.fileLength){
+                                onFail("file download fail , curLength("+mCurrentLength+") > fileLength("+mTaskBean.fileLength+")");
+                                deleteCache();
+                            }
 
                         }
                     });
@@ -297,20 +332,32 @@ public class ZDownTask extends DownWorker {
      */
     private void resetData() {
         mCurrentLength = 0;
+        mThreadMap.clear();
+        isReady.set(true);
     }
 
     /**
      * 删除本地文件和数据库
      */
-    private void deleteCache() {
+    public void deleteCache() {
         synchronized (this) {
-            ZDBManager.getInstance().deleteAll();
+            ZDBManager.getInstance().deleteAll(mTaskBean.url);
             File file = new File(mTaskBean.filePath, mTaskBean.fileName);
             if (file.exists()) {
                 file.delete();
             }
         }
     }
+
+    /**
+     * 更新接口
+     * @param listener
+     */
+    public void updateListener(BaseListener listener) {
+        mTaskBean.listener = listener;
+        mListener = (TaskListener) listener;
+    }
+
 
 
     /**
@@ -325,6 +372,7 @@ public class ZDownTask extends DownWorker {
                     downloadThread.isPause = true;
                 }
             }
+            isReady.set(true);
         }
 
     }
@@ -333,6 +381,10 @@ public class ZDownTask extends DownWorker {
         handleData(mTaskBean);
     }
 
+
+    public boolean isRunning(){
+        return mExecutorService != null && !mExecutorService.isTerminated();
+    }
 
 
 }

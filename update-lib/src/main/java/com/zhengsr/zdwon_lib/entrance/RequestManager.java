@@ -1,11 +1,13 @@
 package com.zhengsr.zdwon_lib.entrance;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.callback.BaseListener;
 import com.zhengsr.zdwon_lib.entrance.imp.task.ZCheckTask;
 import com.zhengsr.zdwon_lib.entrance.imp.task.ZDownTask;
+import com.zhengsr.zdwon_lib.widget.InvisiabelFragment;
 
 import java.util.Map;
 
@@ -14,10 +16,24 @@ import java.util.Map;
  * describe:
  */
 public class RequestManager {
+    private static final String TAG = "RequestManager";
     private ZTaskBean mBean;
     public ZDownTask mTask;
 
-    public RequestManager() {
+
+
+
+    private static class Holder{
+       static RequestManager HODLER = new RequestManager();
+    }
+
+
+    public static RequestManager getInstance(){
+       return Holder.HODLER;
+    }
+
+
+    private RequestManager(){
         mBean = new ZTaskBean();
     }
 
@@ -50,10 +66,10 @@ public class RequestManager {
         return this;
     }
 
-    public RequestManager useBreakPoint(boolean useBreakPoint){
+/*    public RequestManager useBreakPoint(boolean useBreakPoint){
         mBean.useBreakPoint = useBreakPoint;
         return this;
-    }
+    }*/
 
 
     public RequestManager reFreshTime(int reFreshTime) {
@@ -66,6 +82,11 @@ public class RequestManager {
         return this;
     }
 
+    /**
+     * 如果要支持后台下载，只能是 service 的形式
+     * @param allowBackDownload
+     * @return
+     */
     public RequestManager allowBackDownload(boolean allowBackDownload) {
         mBean.allowBackDownload = allowBackDownload;
         return this;
@@ -96,11 +117,43 @@ public class RequestManager {
      * 下载
      */
     public void down(){
-        mBean = new CheckParams().check(mBean);
-        mTask = new ZDownTask(mBean);
+        mBean = new CheckParams().check(mBean,LifeListener);
+        if (mTask == null) {
+            mTask = new ZDownTask(mBean);
+        }else{
+            //正在下载，更新一下接口就可以了
+            mTask.updateListener(mBean.listener);
+        }
     }
 
 
 
+
+
+    InvisiabelFragment.LifecyleListener LifeListener = new InvisiabelFragment.LifecyleListener() {
+        @Override
+        public void onResume() {
+
+        }
+
+        @Override
+        public void onStop() {
+
+        }
+
+        @Override
+        public void onDestroy() {
+            if (!mBean.allowBackDownload){
+                release();
+            }
+        }
+    };
+
+
+    private void release(){
+        mTask = null;
+        mBean.context = null;
+        mBean = null;
+    }
 
 }
