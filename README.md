@@ -32,6 +32,19 @@ allprojects {
 ```
 implementation 'com.github.LillteZheng:AppUpdate:lastest'
 ```
+
+**由于使用了 retrofit 和rxjava 等框架，所以，还需要在您的工程中添加以下关联，不然报错**
+
+```
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.alibaba:fastjson:1.1.70.android'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+```
+
 ## 一、检查版本
 
 ```
@@ -56,7 +69,6 @@ implementation 'com.github.LillteZheng:AppUpdate:lastest'
 
 
 在检查完版本，可以使用如下代码下载文件：
-
 
 
 ```
@@ -106,4 +118,7 @@ ZDown 为程序入口，它提供以下方法：
 - isRunning() 是否正在下载
 - updateListener() 从后台退回来，如果任务正在下载，直接更新接口就可以了，UI就不会乱了
 - deleteCacheAndStart() 当任务失败时，可以用这个把缓存文件和数据删了
+
+
+
 
