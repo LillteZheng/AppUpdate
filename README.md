@@ -10,7 +10,13 @@
 
 
 效果图
-![下载任务](https://github.com/LillteZheng/AppUpdate/raw/master/gif/update.gif)
+<table  align="center">
+
+  <tr>
+    <td><a href="url"><img src="https://github.com/LillteZheng/AppUpdate/raw/master/gif/update.gif" align="left"height="789" width="479"></a></td>
+  </tr>
+
+</table>
 
 ## 配置
 ```
