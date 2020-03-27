@@ -30,7 +30,7 @@ allprojects {
 然后把 ZDloader 写上：
 [![](https://jitpack.io/v/LillteZheng/AppUpdate.svg)](https://jitpack.io/#LillteZheng/AppUpdate)
 ```
-implementation 'com.github.LillteZheng:AppUpdate:lastest'
+implementation 'com.github.LillteZheng:AppUpdate:v1.2'
 ```
 
 **由于使用了 retrofit 和rxjava 等框架，所以，还需要在您的工程中添加以下关联，不然报错**
