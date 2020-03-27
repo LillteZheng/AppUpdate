@@ -47,17 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void check(View view) {
-        Notification.Builder builder = new Notification.Builder(MainActivity.this);
-        builder.setTicker("收到新消息"); //设置提示的内容
-        builder.setContentTitle("你收到一条新信息"); // 设置标题
-        builder.setContentText("废话不多说，今晚网吧见，打不上黄金3不睡觉！！"); // 设置内容
-        builder.setSubText("通宵走起");    // 设置下面一段小子
-        builder.setDefaults(Notification.DEFAULT_ALL);  // 震动，声音，还信息灯闪烁
-        builder.setSmallIcon(R.mipmap.delete);  // 小图标
-        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher));  // 大图标
-        Notification notification = builder.build();
-        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        manager.notify(0,notification);
+
         ZDown.with(this)
                 .url(jsonUrlTest)
                 .listener(new CheckListener<TestBean>(TestBean.class) {
@@ -83,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                                         .threadCount(3)
                                         .reFreshTime(500)
                                         .filePath(mPath)
+
                                         .listener(new TaskListener() {
                                             @Override
                                             public void onSuccess(String filePath, String md5Msg) {

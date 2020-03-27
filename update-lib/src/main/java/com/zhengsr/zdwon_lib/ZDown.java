@@ -61,10 +61,14 @@ public class ZDown {
      * 是否存在
      * @return
      */
-    public static boolean isTaskExsits(){
+    public static boolean isTaskExists(){
         return RequestManager.getInstance().mTask != null;
     }
 
+    /**
+     * 是否正在下载
+     * @return
+     */
     public static boolean isRunning(){
         if (RequestManager.getInstance().mTask != null) {
             return RequestManager.getInstance().mTask.isRunning();
