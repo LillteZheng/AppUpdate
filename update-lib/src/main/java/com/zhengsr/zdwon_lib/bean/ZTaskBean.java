@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.zhengsr.zdwon_lib.callback.BaseListener;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -43,7 +44,7 @@ public class ZTaskBean {
     /**
      * post 的参数
      */
-    public Map<String,String> paramsMap;
+    public Map<String,String> paramsMap = new LinkedHashMap<>();
     /**
      * 是否允许后台更新
      */
@@ -63,4 +64,9 @@ public class ZTaskBean {
      * 监听回调
      */
     public BaseListener listener;
+
+    /**
+     * 是否为 get 请求，默认为true
+     */
+    public boolean isGet = true;
 }

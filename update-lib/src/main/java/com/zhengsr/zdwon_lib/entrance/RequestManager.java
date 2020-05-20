@@ -1,12 +1,10 @@
 package com.zhengsr.zdwon_lib.entrance;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.zhengsr.zdwon_lib.bean.ZTaskBean;
-import com.zhengsr.zdwon_lib.callback.BaseListener;
-import com.zhengsr.zdwon_lib.entrance.imp.task.ZCheckTask;
+import com.zhengsr.zdwon_lib.callback.TaskListener;
 import com.zhengsr.zdwon_lib.entrance.imp.task.ZDownTask;
+import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.widget.InvisiabelFragment;
 
 import java.util.Map;
@@ -77,7 +75,7 @@ public class RequestManager {
         return this;
     }
 
-    public RequestManager listener(BaseListener listener){
+    public RequestManager listener(TaskListener listener){
         mBean.listener = listener;
         return this;
     }
@@ -105,13 +103,8 @@ public class RequestManager {
     }
 
 
-    /**
-     * 检查版本
-     */
-    public void check(){
-        mBean = new CheckParams().checkJsonUrl(mBean);
-        new ZCheckTask(mBean);
-    }
+
+
 
     /**
      * 下载

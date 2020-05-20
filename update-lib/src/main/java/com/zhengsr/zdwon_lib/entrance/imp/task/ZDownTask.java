@@ -6,12 +6,12 @@ import android.os.Looper;
 import android.text.format.Formatter;
 import android.util.Log;
 
+import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.bean.ZThreadBean;
 import com.zhengsr.zdwon_lib.callback.BaseListener;
 import com.zhengsr.zdwon_lib.callback.TaskListener;
 import com.zhengsr.zdwon_lib.entrance.imp.db.ZDBManager;
-import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
 
 import java.io.File;
@@ -60,7 +60,6 @@ public class ZDownTask extends DownWorker {
     @Override
     public void handleData(ZTaskBean bean) {
         if (isReady.get()) {
-
             if (mExecutorService != null && mExecutorService.isShutdown()){
                 mExecutorService = new ThreadPoolExecutor(bean.threadCount,bean.threadCount*2+1,0,
                         TimeUnit.SECONDS,new LinkedBlockingDeque<Runnable>(128));

@@ -1,24 +1,20 @@
-package com.zhengsr.zupdate;
+package com.zhengsr.appupdate;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
+
 import com.zhengsr.zdwon_lib.ZDown;
 import com.zhengsr.zdwon_lib.bean.ZBean;
 import com.zhengsr.zdwon_lib.callback.CheckListener;
 import com.zhengsr.zdwon_lib.callback.TaskListener;
 import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -48,9 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void check(View view) {
 
-        ZDown.with(this)
+
+
+        ZDown.checkWith(this)
                 .url(jsonUrlTest)
-                .listener(new CheckListener<TestBean>(TestBean.class) {
+                .get()
+                .listener(new CheckListener<TestBean>() {
                     @Override
                     public void onCheck(final TestBean data) {
 

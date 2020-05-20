@@ -30,7 +30,7 @@ allprojects {
 然后把 ZDloader 写上：
 [![](https://jitpack.io/v/LillteZheng/AppUpdate.svg)](https://jitpack.io/#LillteZheng/AppUpdate)
 ```
-implementation 'com.github.LillteZheng:AppUpdate:v1.2'
+implementation 'com.github.LillteZheng:AppUpdate:v1.3'
 ```
 
 **由于使用了 retrofit 和rxjava 等框架，所以，还需要在您的工程中添加以下关联，不然报错**
@@ -48,24 +48,25 @@ implementation 'com.github.LillteZheng:AppUpdate:v1.2'
 ## 一、检查版本
 
 ```
- ZDown.with(this)
-        .url(jsonUrlTest)
-        .listener(new CheckListener<TestBean>(TestBean.class) {
-            @Override
-            public void onCheck(final TestBean data) {
+        ZDown.checkWith(this)
+                .url(jsonUrlTest)
+                .get()
+                .listener(new CheckListener<TestBean>() {
+                    @Override
+                    public void onCheck(final TestBean data) {
+                        Log.d(TAG, "zsr onCheck: " + data);
+                     }
 
-
-            }
-
-            @Override
-            public void onFail(String errorMsg) {
-                Log.d(TAG, "zsr onFail: " + errorMsg);
-            }
-        }).check();
+                    @Override
+                    public void onFail(String errorMsg) {
+                        Log.d(TAG, "zsr onFail: " + errorMsg);
+                    }
+                }).check();
 
 ```
 
 在listener中，可以把要转换的数据写上，如果不想转换成实体 bean，直接 String.class 就是返回原始的字符串了。
+checkWith 还支持写入参数，使用 params(..) ，支持 get() 和 post()
 
 
 在检查完版本，可以使用如下代码下载文件：

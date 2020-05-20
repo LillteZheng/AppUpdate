@@ -1,2 +1,2 @@
 include ':app', ':update-lib'
-rootProject.name='ZUpdate'
+

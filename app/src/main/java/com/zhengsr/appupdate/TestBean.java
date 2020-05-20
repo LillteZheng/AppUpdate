@@ -1,4 +1,4 @@
-package com.zhengsr.zupdate;
+package com.zhengsr.appupdate;
 
 /**
  * @auther by zhengshaorui on 2020/3/22

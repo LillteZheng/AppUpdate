@@ -7,8 +7,6 @@ import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
 import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.internal.observers.BlockingBaseObserver;
 import okhttp3.ResponseBody;
 

@@ -1,4 +1,4 @@
-package com.zhengsr.zupdate;
+package com.zhengsr.appupdate;
 
 import android.app.Dialog;
 import android.content.Context;

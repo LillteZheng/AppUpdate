@@ -4,14 +4,19 @@ import android.content.Context;
 
 import com.zhengsr.zdwon_lib.callback.BaseListener;
 import com.zhengsr.zdwon_lib.entrance.RequestManager;
+import com.zhengsr.zdwon_lib.entrance.CheckRequest;
 import com.zhengsr.zdwon_lib.entrance.imp.db.ZDBManager;
-import com.zhengsr.zdwon_lib.entrance.imp.task.ZDownTask;
 
 /**
  * @auther by zhengshaorui on 2020/3/21
  * describe: 一个对外的统一接口
  */
 public class ZDown {
+
+    public static CheckRequest checkWith(Context context){
+        return CheckRequest.get(context);
+    }
+
     public static RequestManager with(Context context){
         ZDBManager.getInstance().config(context.getApplicationContext());
         return RequestManager.getInstance().with(context);
