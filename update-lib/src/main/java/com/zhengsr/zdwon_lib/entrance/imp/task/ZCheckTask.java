@@ -44,7 +44,6 @@ public class ZCheckTask {
                 try {
                     String json = response.body();
 
-
                     Class mclazz = listener.getClassType();
 
                     if (mclazz == null ||  mclazz == String.class){

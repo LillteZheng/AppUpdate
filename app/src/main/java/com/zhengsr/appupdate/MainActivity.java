@@ -45,7 +45,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void check(View view) {
+        ZDown.checkWith(this)
+                .url("http://app.huake-tek.com/api/v1/channelInfo.co")
+                .get()
+                .params("devpkg", "com.hk.hkwelcome")
+                .listener(new CheckListener<CheckBean>() {
+                    @Override
+                    public void onCheck(CheckBean data) {
+                        Log.d(TAG, "zsr onCheck: "+data);
+                    }
 
+                    @Override
+                    public void onFail(String errorMsg) {
+                    }
+                }).check();
 
 
 
