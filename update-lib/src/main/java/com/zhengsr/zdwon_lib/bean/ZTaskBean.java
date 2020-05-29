@@ -69,4 +69,22 @@ public class ZTaskBean {
      * 是否为 get 请求，默认为true
      */
     public boolean isGet = true;
+
+    @Override
+    public String toString() {
+        return "ZTaskBean{" +
+                "context=" + context +
+                ", url='" + url + '\'' +
+                ", threadCount=" + threadCount +
+                ", reFreshTime=" + reFreshTime +
+                ", filePath='" + filePath + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", paramsMap=" + paramsMap +
+                ", allowBackDownload=" + allowBackDownload +
+                ", useBreakPoint=" + useBreakPoint +
+                ", fileLength=" + fileLength +
+                ", listener=" + listener +
+                ", isGet=" + isGet +
+                '}';
+    }
 }

@@ -1,5 +1,7 @@
 package com.zhengsr.zdwon_lib.callback;
 
+import android.util.Log;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -8,7 +10,7 @@ import java.lang.reflect.Type;
  * describe: 检查版本的listener
  */
 public abstract class CheckListener<T> implements BaseListener {
-
+    private static final String TAG = "CheckListener";
     private Class<T> classType;
     public CheckListener() {
         try {
@@ -20,9 +22,11 @@ public abstract class CheckListener<T> implements BaseListener {
         }
     }
 
+
     public Class<T> getClassType() {
         return classType;
     }
+
 
     public abstract void onCheck(T data);
 

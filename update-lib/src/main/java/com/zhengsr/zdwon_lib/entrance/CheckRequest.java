@@ -1,6 +1,7 @@
 package com.zhengsr.zdwon_lib.entrance;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.callback.CheckListener;
@@ -13,7 +14,7 @@ import java.util.Map;
  * Describe:
  */
 public class CheckRequest {
-
+    private static final String TAG = "CheckRequest";
     private ZTaskBean mBean;
 
     public static CheckRequest get(Context context) {

@@ -1,7 +1,10 @@
 package com.zhengsr.zdwon_lib.entrance.imp.task;
 
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.zhengsr.zdwon_lib.bean.ZTaskBean;
 import com.zhengsr.zdwon_lib.callback.CheckListener;
 import com.zhengsr.zdwon_lib.entrance.imp.net.ZHttpCreate;
@@ -42,12 +45,13 @@ public class ZCheckTask {
                     String json = response.body();
 
 
-                    Class<?> mclazz = listener.getClassType();
+                    Class mclazz = listener.getClassType();
 
                     if (mclazz == null ||  mclazz == String.class){
                         listener.onCheck(json);
                     }else{
                         Object data = JSON.parseObject(json, mclazz);
+
                         listener.onCheck(data);
                     }
 

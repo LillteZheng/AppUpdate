@@ -30,7 +30,7 @@ allprojects {
 然后把 ZDloader 写上：
 [![](https://jitpack.io/v/LillteZheng/AppUpdate.svg)](https://jitpack.io/#LillteZheng/AppUpdate)
 ```
-implementation 'com.github.LillteZheng:AppUpdate:v1.3'
+implementation 'com.github.LillteZheng:AppUpdate:v1.4'
 ```
 
 **由于使用了 retrofit 和rxjava 等框架，所以，还需要在您的工程中添加以下关联，不然报错**
@@ -107,6 +107,12 @@ ZDown.with(MainActivity.this)
         }
     }).down();
     
+```
+
+## 二、混淆
+内部已混淆，但如果使用 CheckListener 传入 bean 类，bean类需要自己混淆，eg：
+```
+-keep class com.zhengsr.appupdate.bean.** { *; }
 ```
 
 ZDown 为程序入口，它提供以下方法：
