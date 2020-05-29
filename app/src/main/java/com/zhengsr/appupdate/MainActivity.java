@@ -5,12 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.alibaba.fastjson.JSON;
 
+import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.zhengsr.appupdate.bean.CheckBean;
 import com.zhengsr.zdwon_lib.ZDown;
+import com.zhengsr.zdwon_lib.bean.ZBean;
 import com.zhengsr.zdwon_lib.callback.CheckListener;
+import com.zhengsr.zdwon_lib.callback.TaskListener;
+import com.zhengsr.zdwon_lib.utils.ZCommontUitls;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,30 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void check(View view) {
 
+
+
+
         ZDown.checkWith(this)
-                .url("http://app.huake-tek.com/api/v1/channelInfo.co")
-                .get()
-                .params("devpkg", "com.hk.hkwelcome")
-                .listener(new CheckListener<String>() {
-                    @Override
-                    public void onCheck(String data) {
-
-                        Log.d(TAG, "zsr onCheck: "+data);
-
-                        CheckBean parse = JSON.parseObject(data, CheckBean.class);
-                        Log.d(TAG, "zsr onCheck: "+parse);
-
-
-                    }
-
-                    @Override
-                    public void onFail(String errorMsg) {
-                        Log.d(TAG, "zsr onFail: "+errorMsg);
-                    }
-                }).check();
-
-
-       /* ZDown.checkWith(this)
                 .url(jsonUrlTest)
                 .get()
                 .listener(new CheckListener<TestBean>() {
@@ -128,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFail(String errorMsg) {
                         Log.d(TAG, "zsr onFail: " + errorMsg);
                     }
-                }).check();*/
+                }).check();
     }
 
 
